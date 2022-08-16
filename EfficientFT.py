@@ -10,14 +10,6 @@ df = np.log(1+df['Adj Close'].pct_change())
 def portfolioreturn (weights):
     return np.dot(df.mean(), weights)
 
-# Portfolio covariance and standard deviance
-"""
-df.cov()
-portfolioVar = weights[0]**2*df.cov().iloc[0,0] + weights[1]**2*df.cov().iloc[1,1] + 2*weights[0]*weights[1]*df.cov().iloc[0, 1]
-portfolioSD = portfolioVar ** (1/2)
-print (portfolioVar, portfolioSD)
-"""
-
 # Efficient var
 def portfolioSD(weights):
     return (np.dot(np.dot(df.cov(), weights), weights))**(1/2)*(np.sqrt(250))
